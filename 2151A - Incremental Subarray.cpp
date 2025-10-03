@@ -7,7 +7,7 @@ int main() {
     std::getline(std::cin, inputLine);
     std::stringstream numTestCasesStream(inputLine);
     int numTestCases; numTestCasesStream >> numTestCases;
-    
+
     for (int i = 0; i < numTestCases; i++) {
         int finalAnswer;
         bool finalAnswerIsOne = false;
@@ -18,22 +18,14 @@ int main() {
         int numDesiredNumbers; inputLineStringStream >> numDesiredNumbers;
         int maxDesiredNumber = 0;
 
-        std::cout << "Maximum Written Number is " << maxWrittenNumber << std::endl;
-        std::cout << "Number of Desired Numbers is " << numDesiredNumbers << std::endl;
-
-        bool firstDesiredNumberIsOne = false;
         int desiredNumber;
-
 
         std::string desiredNumbers; std::getline(std::cin, desiredNumbers);
         std::stringstream desiredNumbersStringStream(desiredNumbers);
 
         for (int j = 0; j < numDesiredNumbers; j++) {
             desiredNumbersStringStream >> desiredNumber;
-            if (desiredNumber == 1 && j == 0) {
-                firstDesiredNumberIsOne = true;
-            }
-            if (!firstDesiredNumberIsOne && desiredNumber == 1) {
+            if (j != 0 && desiredNumber == 1) {
                 finalAnswerIsOne = true;
                 break;
             }
