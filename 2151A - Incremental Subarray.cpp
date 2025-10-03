@@ -1,24 +1,38 @@
 #include <iostream>
+#include <sstream>
+#include <string>
 
 int main() {
-    int numTestCases; std::cin >> numTestCases;
+    std::string inputLine;
+    std::getline(std::cin, inputLine);
+    std::stringstream numTestCasesStream(inputLine);
+    int numTestCases; numTestCasesStream >> numTestCases;
+    
     for (int i = 0; i < numTestCases; i++) {
         int finalAnswer;
         bool finalAnswerIsOne = false;
 
-        int maxWrittenNumber; std::cin >> maxWrittenNumber;
-        int numDesiredNumbers; std::cin >> numDesiredNumbers;
+        std::getline(std::cin, inputLine);
+        std::stringstream inputLineStringStream(inputLine);
+        int maxWrittenNumber; inputLineStringStream >> maxWrittenNumber;
+        int numDesiredNumbers; inputLineStringStream >> numDesiredNumbers;
         int maxDesiredNumber = 0;
 
+        std::cout << "Maximum Written Number is " << maxWrittenNumber << std::endl;
+        std::cout << "Number of Desired Numbers is " << numDesiredNumbers << std::endl;
 
         bool firstDesiredNumberIsOne = false;
-        int desiredNumber; std::cin >> desiredNumber;
-        if (desiredNumber == 1) {
-            firstDesiredNumberIsOne = true;
-        }
+        int desiredNumber;
 
-        for (int j = 1; j < numDesiredNumbers; j++) {
-            std::cin >> desiredNumber;
+
+        std::string desiredNumbers; std::getline(std::cin, desiredNumbers);
+        std::stringstream desiredNumbersStringStream(desiredNumbers);
+
+        for (int j = 0; j < numDesiredNumbers; j++) {
+            desiredNumbersStringStream >> desiredNumber;
+            if (desiredNumber == 1 && j == 0) {
+                firstDesiredNumberIsOne = true;
+            }
             if (!firstDesiredNumberIsOne && desiredNumber == 1) {
                 finalAnswerIsOne = true;
                 break;
