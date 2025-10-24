@@ -38,6 +38,8 @@
         "string_view": "cpp",
         "typeinfo": "cpp",
         "variant": "cpp",
-        "vector": "cpp"
+        "vector": "cpp",
+        "execution": "cpp",
+        "sstream": "cpp"
     }
 }
