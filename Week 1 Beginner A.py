@@ -1,20 +1,31 @@
 def main(): 
     budget = int(input("").split(" ")[1])
-    base_prices_so_far = 0
-    total_price_so_far = 0
-    tentative_total_price = 0
+    
     souvenir_base_prices = [int(x) for x in input("").split(" ")]
-    # souvenir_base_prices_dict = dict(zip(range(1, len(souvenir_base_prices) + 1)))
-    for index, base_price in enumerate(souvenir_base_prices):
-        base_prices_so_far += base_price
-        tentative_total_price = base_prices_so_far + (index + 1) * sum(range(0, index + 2))
+    # souvenir_prices_dict = dict()
+    # for souvenir_base_price in souvenir_base_prices:
+    #     souvenir_prices_dict[souvenir_base_price] = 0
+    
+    num_souvenirs = 0
+    confirmed_total_price = 0
+    tentative_total_price = 0
+    while num_souvenirs < len(souvenir_base_prices):
+        num_souvenirs += 1
+        souvenir_prices_list = []
+        for index, souvenir_base_price in enumerate(souvenir_base_prices):
+            souvenir_prices_list.append(souvenir_base_price + (index + 1) * num_souvenirs)
+        # print(f"Before sorting: {souvenir_prices_list}")
+        souvenir_prices_list.sort()
+        # print(f"After sorting: {souvenir_prices_list}")
+        tentative_total_price = sum(souvenir_prices_list[:num_souvenirs])
+        # print(f"For {num_souvenirs} souvenirs, the minimum cost total cost is expected to be {tentative_total_price}")
         if (tentative_total_price > budget):
-            index -= 1
+            num_souvenirs -= 1
             break
         else:
-            # print(f"Total base prices so far: {base_prices_so_far}, index prices: {(index + 1) * sum(range(0, index + 2))}")
-            total_price_so_far = tentative_total_price
-    print(f"{index + 1} {total_price_so_far}")
+            confirmed_total_price = tentative_total_price
+
+    print(f"{num_souvenirs} {confirmed_total_price}")
 
 if __name__ == "__main__":
     main()
