@@ -1,4 +1,7 @@
-def main(): 
+def main():
+    naive_solution()
+
+def naive_solution(): 
     budget = int(input("").split(" ")[1])
     
     souvenir_base_prices = [int(x) for x in input("").split(" ")]
