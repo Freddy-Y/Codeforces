@@ -19,7 +19,7 @@ unsigned long calculate_total_price(int tentative_num_souvenirs) {
 void final_solution() {
     std::cin >> num_souvenirs;
     std::cin >> budget;
-    int souvenir_cost;
+    unsigned long souvenir_cost;
     for (int i = 0; i < num_souvenirs; i++) {
         std::cin >> souvenir_cost;
         souvenir_base_prices.insert(souvenir_base_prices.begin() + i, souvenir_cost);
