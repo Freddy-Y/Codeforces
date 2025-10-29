@@ -14,7 +14,7 @@ def can_bake_cookies(num_desired_cookies) -> bool:
             total_magic_powder_needed += abs(difference_between_needed_and_owned_ingredients)
     return (total_magic_powder_needed <= owned_magic_powder)
 
-def solution():
+def final_solution():
     num_cookies_possible_without_magic_powder = [owned_ingredients[x] // required_ingredients[x] for x in range(0, num_ingredients)]
     lower_bound = min(num_cookies_possible_without_magic_powder)
     least_ingredient_index = num_cookies_possible_without_magic_powder.index(lower_bound)
@@ -33,7 +33,7 @@ def solution():
     print(upper_bound)
 
 def main():
-    solution()
+    final_solution()
 
 if __name__ == "__main__":
     main()
