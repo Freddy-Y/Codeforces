@@ -4,10 +4,10 @@
 #include <cmath>
 
 int num_souvenirs;
-long budget; 
+unsigned long budget; 
 std::vector<unsigned long> souvenir_base_prices;
 
-long calculate_total_price(int tentative_num_souvenirs) {
+unsigned long calculate_total_price(int tentative_num_souvenirs) {
     std::vector<unsigned long> souvenir_prices = {};
     for (int i = 0; i < num_souvenirs; i++) {
         souvenir_prices.push_back(souvenir_base_prices[i] + (i + 1) * tentative_num_souvenirs);
@@ -28,7 +28,7 @@ void final_solution() {
     int num_souvenirs_upper_bound = num_souvenirs;          // inclusive
     int num_souvenirs_lower_bound = 0;                      // inclusive
     int tentative_num_souvenirs;
-    long tentative_total_price;
+    unsigned long tentative_total_price;
     while (num_souvenirs_upper_bound != num_souvenirs_lower_bound) {
         tentative_num_souvenirs = ceil((num_souvenirs_upper_bound + num_souvenirs_lower_bound) / 2.0);
         tentative_total_price = calculate_total_price(tentative_num_souvenirs);
